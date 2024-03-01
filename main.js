@@ -25,8 +25,8 @@ searchInput.addEventListener('input', function() {
 Потребительская культура горизонтальна. <mark>Рас</mark>кручиваясь, абсолютно твёрдое тело трансформирует ускоряющийся показ баннера, исходя из суммы моментов. Проекция недетерминировано интегрирует  колебательный кожух.
 
 Волновая тень, отб<mark>рас</mark>ывая подробности, коаксиально начинает газообразный лазер. */
-const searchInput1 = document.getElementById('searchInput');
-const searchResult1 = document.getElementById('searchResult');
+const searchInput1 = document.getElementById('searchInput1');
+const searchResult1 = document.getElementById('searchResult1');
 const text = document.querySelector('.text').innerText.trim().toLowerCase(); 
 
 searchInput.addEventListener('input', function() {
@@ -40,5 +40,24 @@ searchInput.addEventListener('input', function() {
         searchResult.innerHTML = highlightedText ? highlightedText : 'No matches found';
     } else {
         searchResult.innerHTML = '';
+    }
+});
+
+// 4. При очистке инпута или вводе менее 2 символов, а также если совпадений не найдено - все теги mark из текста вычищаются.
+const searchInput2 = document.getElementById('searchInput2');
+const searchResult2 = document.getElementById('searchResult2');
+const text1 = document.querySelector('.text1').innerHTML;
+
+searchInput.addEventListener('input', function() {
+    const searchText = this.value.trim().toLowerCase();
+    if (searchText.length >= 2) { 
+        regex = new RegExp(`(${searchText})`, 'gi'); 
+        const highlightedText = text.replace(regex, '<mark>$1</mark>'); 
+        searchResult.innerHTML = highlightedText; 
+
+    } else {
+     
+        searchResult.innerHTML = '';
+        regex = null;
     }
 });
