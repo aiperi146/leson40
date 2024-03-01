@@ -18,3 +18,27 @@ searchInput.addEventListener('input', function() {
         searchResult.innerHTML = ''; 
     }
 });
+
+/* 3. Каждое совпадения в выделяется HTML-тегом <mark> (стилизация mark на ваше усмотрение, например жёлтый цвет фона). Например, если мы искали строку "рас", в тексте появятся такие теги:
+Отсюда естественно следует, что пере<mark>рас</mark>пределение бюджета начинает ролевой гамма-квант. Центр подвеса, обобщая изложенное, концентрирует эксклюзивный ассоцианизм.
+
+Потребительская культура горизонтальна. <mark>Рас</mark>кручиваясь, абсолютно твёрдое тело трансформирует ускоряющийся показ баннера, исходя из суммы моментов. Проекция недетерминировано интегрирует  колебательный кожух.
+
+Волновая тень, отб<mark>рас</mark>ывая подробности, коаксиально начинает газообразный лазер. */
+const searchInput1 = document.getElementById('searchInput');
+const searchResult1 = document.getElementById('searchResult');
+const text = document.querySelector('.text').innerText.trim().toLowerCase(); 
+
+searchInput.addEventListener('input', function() {
+    const textToSearch = this.value.trim().toLowerCase(); 
+
+    if (textToSearch.length >= 2) { 
+        const regex = new RegExp(textToSearch, 'g'); 
+
+
+        const highlightedText = text.replace(regex, match => `<mark>${match}</mark>`);
+        searchResult.innerHTML = highlightedText ? highlightedText : 'No matches found';
+    } else {
+        searchResult.innerHTML = '';
+    }
+});
